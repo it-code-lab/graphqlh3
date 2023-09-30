@@ -5,10 +5,7 @@ import com.boot.graphql.model.Book;
 import com.boot.graphql.repo.AuthorRepo;
 import com.boot.graphql.repo.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.graphql.data.method.annotation.SchemaMapping;
+import org.springframework.graphql.data.method.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import java.util.Optional;
@@ -18,7 +15,6 @@ public class BookController  {
 
     @Autowired
     AuthorRepo authorRepo;
-
     @Autowired
     BookRepo bookRepo;
 
@@ -46,11 +42,9 @@ public class BookController  {
     public Book updateBook(@Argument int id, @Argument String name, @Argument int authorId){
 
         Optional<Book> optBook = bookRepo.findById(id);
-
         Book book1 = optBook.get();
         book1.setName(name);
         book1.setAuthorId(authorId);
-
         return bookRepo.save(book1);
     }
 }

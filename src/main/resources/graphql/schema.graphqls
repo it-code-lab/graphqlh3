@@ -20,3 +20,4 @@ type Mutation {
     updateBook(id: ID!, name: String, authorId: ID): Book!
     deleteBook(id: ID!): Boolean
 }
+
